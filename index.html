@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofia Influenciadora 🐞✨</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: Georgia, serif;
+    text-align: center;
+    overflow-x: hidden;
+    background-color: #e92842;
+    background-image: radial-gradient(
+        circle, #171717 25%, transparent 27%
+    );
+    background-size: 85px 85px;
+}
+
+.cartinha {
+    position: relative;
+    z-index: 2;
+    background: #fffafc;
+    padding: 35px 25px;
+    border-radius: 25px;
+    border: 4px solid #202020;
+    max-width: 540px;
+    width: 100%;
+    box-shadow: 0 12px 35px #0005;
+    animation: aparecer 1s ease;
+}
+
+h1 { color: #e92842; }
+
+h2 {
+    color: #666;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+p {
+    color: #533747;
+    font-size: 18px;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+button {
+    background: #e92842;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 6px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #bd1730;
+    transform: scale(1.05);
+}
+
+.secundario { background: #23834d; }
+
+.coracao {
+    font-size: 45px;
+    animation: pulsar 1.5s infinite;
+}
+
+.contador, .assinatura {
+    color: #888;
+    font-size: 14px;
+    margin-top: 18px;
+}
+
+.flutuante {
+    position: fixed;
+    z-index: 1;
+    bottom: -40px;
+    pointer-events: none;
+    animation: subir 5s linear forwards;
+}
+
+@keyframes pulsar {
+    50% { transform: scale(1.2); }
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subir {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+<div class="cartinha">
+
+<div class="coracao">🐞✨💚</div>
+
+<h1>Para Sofia, que inspira! 🐞</h1>
+<h2>Uma homenagem à sua criatividade e dedicação</h2>
+
+<p id="mensagem">Oi, Sofia! ✨
+
+Essa homenagem é para celebrar
+seu trabalho como influenciadora.
+
+Clique no botão e descubra
+cada mensagem especial! 🐞❤️</p>
+
+<button id="proximo" onclick="avancar()">
+Começar homenagem 💌
+</button>
+
+<button class="secundario"
+onclick="reiniciar()">Recomeçar 🐞</button>
+
+<div class="contador" id="contador"></div>
+
+<div class="assinatura">
+Com carinho e admiração, Kaio ❤️
+</div>
+
+</div>
+
+<script>
+const mensagens = [
+
+`Sofia, preparei essa pequena homenagem para reconhecer o carinho e a dedicação que você coloca naquilo que faz.
+
+Existem pessoas que conseguem transmitir alegria até mesmo através de uma tela, e você é uma delas. ❤️`,
+
+`Uma das coisas mais legais de acompanhar seus conteúdos é perceber seu jeito de se expressar e compartilhar suas ideias.
+
+Cada publicação representa uma oportunidade de criar, aprender e se conectar com outras pessoas.
+
+E é muito bonito ver você construindo seu próprio caminho. ✨`,
+
+`Nem tudo se resume a curtidas, seguidores ou visualizações.
+
+Por trás de cada conteúdo existe uma pessoa com ideias, sonhos, dedicação e vontade de crescer.
+
+E isso também merece ser reconhecido.
+
+Que você nunca se esqueça do valor do seu trabalho, independentemente dos números. 💗`,
+
+`Assim como Ladybug nos mostra que coragem não significa nunca sentir medo, mas continuar tentando apesar das dificuldades, espero que você sempre encontre coragem para seguir seus sonhos.
+
+Que cada desafio seja uma oportunidade de aprender e que você nunca perca a essência que torna seus conteúdos tão especiais. 🐞❤️`,
+
+`Falando agora como alguém que admira seu trabalho: seus conteúdos são muito bons!
+
+É muito legal acompanhar suas publicações e ver sua criatividade.
+
+Espero que você continue encontrando felicidade naquilo que faz e que cada nova conquista seja motivo de orgulho. 💚`,
+
+`Que você tenha muitas oportunidades, realize seus projetos e alcance lugares que hoje talvez nem imagine.
+
+Mas, acima de tudo, que seu crescimento venha acompanhado de felicidade, boas amizades e momentos que realmente façam sentido para você.
+
+Porque o sucesso é ainda mais bonito quando podemos aproveitar o caminho. ✨`,
+
+`Sofia, essa homenagem é uma forma simples de dizer que seu trabalho merece carinho e reconhecimento.
+
+Continue criando, descobrindo novas possibilidades e acreditando no seu potencial.
+
+Que nunca faltem motivos para sorrir e pessoas que torçam sinceramente pelas suas conquistas.
+
+Você merece coisas lindas!
+
+Com carinho e admiração, Kaio. 🐞❤️`
+];
+
+let indice = 0;
+
+function avancar() {
+    document.getElementById("mensagem").innerText =
+        mensagens[indice];
+
+    document.getElementById("contador").innerText =
+        `${indice + 1} de ${mensagens.length} 🐞`;
+
+    criarCoracoes();
+    indice++;
+
+    document.getElementById("proximo").innerText =
+        indice >= mensagens.length
+        ? "Ler novamente 💗"
+        : "Continuar 💌";
+
+    if (indice >= mensagens.length) indice = 0;
+}
+
+function reiniciar() {
+    indice = 0;
+    document.getElementById("mensagem").innerText =
+        "Oi, Sofia! ✨\n\nEssa homenagem é para celebrar seu trabalho como influenciadora.\n\nClique para começar! 🐞";
+    document.getElementById("contador").innerText = "";
+    document.getElementById("proximo").innerText =
+        "Começar homenagem 💌";
+}
+
+function criarCoracoes() {
+    const simbolos = ["🐞", "✨", "💚", "❤️", "🌟"];
+    for (let i = 0; i < 12; i++) {
+        setTimeout(() => {
+            const elemento = document.createElement("span");
+            elemento.className = "flutuante";
+            elemento.innerText =
+                simbolos[Math.floor(Math.random() * simbolos.length)];
+            elemento.style.left = Math.random() * 100 + "vw";
+            elemento.style.fontSize =
+                (15 + Math.random() * 20) + "px";
+            document.body.appendChild(elemento);
+            setTimeout(() => elemento.remove(), 5000);
+        }, i * 100);
+    }
+}
+</script>
+</body>
+</html>
